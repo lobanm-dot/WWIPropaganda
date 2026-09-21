@@ -1,0 +1,2135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Selling the War: WWI Propaganda Lab</title>
+
+<style>
+
+:root{
+  --navy:#17365d;
+  --blue:#285486;
+  --red:#b6322f;
+  --cream:#f3ecdc;
+  --paper:#fffaf0;
+  --gold:#d0a347;
+  --ink:#202733;
+  --muted:#667085;
+  --green:#2f7549;
+  --shadow:0 8px 24px rgba(0,0,0,.14);
+}
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family:Arial, Helvetica, sans-serif;
+  color:var(--ink);
+  background:
+    linear-gradient(
+      #e5ddca,
+      #f5f0e6 40%,
+      #e9dfcb
+    );
+  min-height:100vh;
+}
+
+.wrap{
+  max-width:1180px;
+  margin:auto;
+  padding:18px;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.top{
+  background:
+    linear-gradient(
+      180deg,
+      #285486,
+      #17365d
+    );
+
+  color:white;
+
+  border:1px solid #d6b363;
+  border-radius:18px;
+
+  padding:16px 18px;
+
+  box-shadow:var(--shadow);
+
+  position:sticky;
+  top:8px;
+  z-index:5;
+}
+
+.stripe{
+  height:8px;
+
+  margin:-8px -7px 12px;
+
+  border-radius:8px;
+
+  background:
+    repeating-linear-gradient(
+      90deg,
+      #bd3733 0 60px,
+      #f5efdf 60px 120px,
+      #244d80 120px 180px
+    );
+}
+
+.top h1{
+  font-family:Georgia, serif;
+
+  margin:0;
+
+  font-size:1.6rem;
+
+  letter-spacing:.03em;
+
+  text-transform:uppercase;
+}
+
+.top p{
+  margin:4px 0 11px;
+
+  color:#dce6f3;
+}
+
+.scores{
+  display:flex;
+
+  gap:8px;
+
+  flex-wrap:wrap;
+}
+
+.pill{
+  background:#fff9eb;
+
+  color:var(--navy);
+
+  border:1px solid #dfbc69;
+
+  border-radius:999px;
+
+  padding:8px 13px;
+
+  font-weight:800;
+}
+
+
+/* =========================
+   SCREENS
+========================= */
+
+.screen{
+  display:none;
+
+  margin-top:20px;
+}
+
+.screen.active{
+  display:block;
+}
+
+.panel,
+.card{
+  background:var(--paper);
+
+  border:1px solid #d8c7a2;
+
+  border-radius:18px;
+
+  box-shadow:var(--shadow);
+}
+
+.panel{
+  padding:24px;
+}
+
+
+/* =========================
+   INTRO
+========================= */
+
+.intro{
+  display:grid;
+
+  grid-template-columns:1.08fr .92fr;
+
+  gap:22px;
+}
+
+.intro h2{
+  font-family:Georgia, serif;
+
+  color:var(--navy);
+
+  font-size:2.2rem;
+
+  line-height:1.08;
+
+  margin:.45rem 0 .75rem;
+}
+
+.intro p,
+.intro li{
+  line-height:1.6;
+}
+
+.kicker{
+  display:inline-block;
+
+  background:var(--red);
+
+  color:#fff;
+
+  border-radius:999px;
+
+  padding:6px 11px;
+
+  font-size:.78rem;
+
+  font-weight:900;
+
+  letter-spacing:.07em;
+
+  text-transform:uppercase;
+}
+
+.infoGrid{
+  display:grid;
+
+  grid-template-columns:1fr 1fr;
+
+  gap:11px;
+
+  margin:17px 0;
+}
+
+.info{
+  background:#f8f0dc;
+
+  border:1px solid #e0cfa8;
+
+  border-radius:13px;
+
+  padding:13px;
+}
+
+.info b{
+  display:block;
+
+  color:var(--navy);
+
+  margin-bottom:5px;
+}
+
+.mission{
+  background:#eef3f8;
+
+  border-left:6px solid var(--navy);
+
+  padding:14px;
+
+  border-radius:11px;
+
+  margin:17px 0;
+}
+
+
+/* =========================
+   CREEL CARD
+========================= */
+
+.creelCard{
+  background:
+    linear-gradient(
+      145deg,
+      #17365d,
+      #2e6096
+    );
+
+  color:white;
+
+  border-radius:17px;
+
+  padding:24px;
+
+  min-height:480px;
+
+  display:flex;
+
+  flex-direction:column;
+
+  position:relative;
+
+  overflow:hidden;
+}
+
+.creelCard::after{
+  content:"CPI";
+
+  position:absolute;
+
+  right:-15px;
+
+  bottom:-55px;
+
+  font-family:Georgia, serif;
+
+  font-size:12rem;
+
+  font-weight:900;
+
+  color:rgba(255,255,255,.07);
+}
+
+.creelCard h3{
+  font-family:Georgia, serif;
+
+  font-size:2.1rem;
+
+  margin:.5rem 0 .2rem;
+}
+
+.creelCard .label{
+  color:#f4d477;
+
+  font-weight:900;
+
+  letter-spacing:.08em;
+}
+
+.bigQuestion{
+  margin-top:auto;
+
+  background:rgba(255,255,255,.1);
+
+  border-left:5px solid var(--gold);
+
+  padding:14px;
+
+  border-radius:10px;
+
+  position:relative;
+
+  z-index:1;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+button{
+  border:0;
+
+  border-radius:11px;
+
+  padding:12px 18px;
+
+  font-size:1rem;
+
+  font-weight:900;
+
+  cursor:pointer;
+}
+
+.primary{
+  background:var(--red);
+
+  color:white;
+}
+
+.secondary{
+  background:var(--navy);
+
+  color:white;
+}
+
+.actions{
+  display:flex;
+
+  gap:10px;
+
+  flex-wrap:wrap;
+
+  margin-top:15px;
+}
+
+
+/* =========================
+   PROGRESS
+========================= */
+
+.progress{
+  height:14px;
+
+  background:#d8cfbb;
+
+  border:1px solid #c9b78e;
+
+  border-radius:999px;
+
+  overflow:hidden;
+
+  margin-bottom:14px;
+}
+
+.progress div{
+  height:100%;
+
+  width:0;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--red),
+      var(--gold),
+      var(--navy)
+    );
+
+  transition:.25s;
+}
+
+
+/* =========================
+   GAME
+========================= */
+
+.game{
+  display:grid;
+
+  grid-template-columns:1.05fr .95fr;
+
+  gap:18px;
+}
+
+.posterCard{
+  overflow:hidden;
+}
+
+.posterWrap{
+  height:610px;
+
+  padding:15px;
+
+  background:#e9e1d2;
+
+  display:flex;
+
+  justify-content:center;
+
+  align-items:center;
+
+  position:relative;
+}
+
+.posterWrap img{
+  max-width:100%;
+
+  max-height:100%;
+
+  object-fit:contain;
+
+  box-shadow:
+    0 6px 20px rgba(0,0,0,.18);
+}
+
+.posterNum{
+  position:absolute;
+
+  left:18px;
+
+  top:18px;
+
+  width:50px;
+
+  height:50px;
+
+  border-radius:50%;
+
+  background:var(--navy);
+
+  color:white;
+
+  border:3px solid white;
+
+  display:flex;
+
+  justify-content:center;
+
+  align-items:center;
+
+  font-family:Georgia, serif;
+
+  font-size:1.3rem;
+
+  font-weight:900;
+
+  box-shadow:var(--shadow);
+}
+
+.posterInfo{
+  padding:17px 19px;
+
+  border-top:1px solid #dfd1b4;
+}
+
+.gameTitle{
+  font-family:Georgia, serif;
+
+  color:var(--navy);
+
+  font-size:1.65rem;
+
+  margin:.5rem 0;
+}
+
+.prompt{
+  color:#3c4656;
+
+  line-height:1.55;
+}
+
+
+/* =========================
+   DECISION PANEL
+========================= */
+
+.decision{
+  padding:20px;
+
+  position:relative;
+
+  overflow:hidden;
+}
+
+.decision::before{
+  content:"";
+
+  position:absolute;
+
+  top:0;
+
+  left:0;
+
+  right:0;
+
+  height:8px;
+
+  background:
+    repeating-linear-gradient(
+      90deg,
+      #bb3531 0 55px,
+      #f7f0df 55px 110px,
+      #244f83 110px 165px
+    );
+}
+
+.decision h3{
+  font-family:Georgia, serif;
+
+  color:var(--navy);
+
+  font-size:1.5rem;
+
+  margin:11px 0 7px;
+}
+
+.guideQuestion{
+  background:#f7efdd;
+
+  border-left:5px solid var(--gold);
+
+  padding:11px 13px;
+
+  border-radius:9px;
+
+  margin:10px 0 15px;
+
+  line-height:1.45;
+}
+
+.choice{
+  display:block;
+
+  width:100%;
+
+  text-align:left;
+
+  margin:8px 0;
+
+  padding:13px;
+
+  border:1px solid #ccb98e;
+
+  background:#fffdf8;
+
+  color:var(--ink);
+
+  border-radius:10px;
+
+  box-shadow:none;
+
+  font-weight:700;
+}
+
+.choice:hover{
+  background:#f5ead0;
+}
+
+.choice.selected{
+  background:#e7eef7;
+
+  border:2px solid var(--navy);
+
+  color:var(--navy);
+}
+
+
+/* =========================
+   FEEDBACK
+========================= */
+
+.feedback,
+.reveal{
+  display:none;
+
+  margin-top:14px;
+
+  padding:14px;
+
+  border-radius:12px;
+
+  line-height:1.55;
+}
+
+.feedback.show{
+  display:block;
+}
+
+.feedback.good{
+  background:#e9f6ec;
+
+  border:1px solid #bee0c7;
+
+  color:#155b2f;
+}
+
+.feedback.bad{
+  background:#faeceb;
+
+  border:1px solid #efc9c6;
+
+  color:#842a2a;
+}
+
+.reveal.show{
+  display:block;
+
+  background:#fff3d5;
+
+  border:1px solid #dfbd71;
+}
+
+.tags span{
+  display:inline-block;
+
+  margin:7px 5px 0 0;
+
+  padding:6px 9px;
+
+  border-radius:999px;
+
+  background:#eee4cf;
+
+  color:var(--navy);
+
+  font-size:.82rem;
+
+  font-weight:800;
+}
+
+
+/* =========================
+   FINAL
+========================= */
+
+.finish h2{
+  font-family:Georgia, serif;
+
+  color:var(--navy);
+
+  font-size:2rem;
+}
+
+.finishGrid{
+  display:grid;
+
+  grid-template-columns:repeat(3,1fr);
+
+  gap:14px;
+
+  margin:18px 0;
+}
+
+.stat{
+  background:#fff;
+
+  border:1px solid #dbcba8;
+
+  border-radius:14px;
+
+  padding:18px;
+
+  text-align:center;
+}
+
+.stat b{
+  display:block;
+
+  color:var(--muted);
+
+  font-size:.9rem;
+}
+
+.stat strong{
+  display:block;
+
+  color:var(--navy);
+
+  font-size:2rem;
+
+  margin-top:7px;
+}
+
+textarea{
+  width:100%;
+
+  min-height:110px;
+
+  border:1px solid #ccb98e;
+
+  border-radius:11px;
+
+  padding:12px;
+
+  font:inherit;
+
+  background:white;
+
+  margin-top:7px;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:900px){
+
+  .intro,
+  .game,
+  .finishGrid,
+  .infoGrid{
+    grid-template-columns:1fr;
+  }
+
+  .top{
+    position:static;
+  }
+
+  .posterWrap{
+    height:460px;
+  }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+<div class="wrap">
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header class="top">
+
+  <div class="stripe"></div>
+
+  <h1>
+    Selling the War:
+    WWI Propaganda Purpose Lab
+  </h1>
+
+  <p>
+    What did wartime propaganda want ordinary
+    people to think, feel, and do?
+  </p>
+
+  <div class="scores">
+
+    <div class="pill">
+      Poster
+      <span id="now">0</span>/15
+    </div>
+
+    <div class="pill">
+      Purpose Points:
+      <span id="points">0</span>
+    </div>
+
+    <div class="pill">
+      Streak:
+      <span id="streak">0</span>
+    </div>
+
+  </div>
+
+</header>
+
+
+<!-- =========================
+     INTRO SCREEN
+========================= -->
+
+<section
+  id="intro"
+  class="screen active"
+>
+
+<div class="panel intro">
+
+
+<div>
+
+  <span class="kicker">
+    Washington, D.C. • 1917
+  </span>
+
+  <h2>
+    The Committee on
+    Public Information
+  </h2>
+
+  <p>
+    When the United States entered World War I,
+    President Woodrow Wilson created the
+    <strong>
+      Committee on Public Information
+      (CPI)
+    </strong>.
+  </p>
+
+  <p>
+    Its job was to build support for the war
+    and convince millions of Americans that
+    supporting the war effort was important.
+  </p>
+
+
+  <div class="infoGrid">
+
+    <div class="info">
+
+      <b>
+        George Creel
+      </b>
+
+      A journalist chosen to lead the CPI.
+      Creel organized a massive campaign
+      to influence American public opinion.
+
+    </div>
+
+
+    <div class="info">
+
+      <b>
+        How the CPI Reached People
+      </b>
+
+      Posters, newspaper material,
+      pamphlets, films, advertising,
+      and speeches by the
+      <strong>
+        Four Minute Men.
+      </strong>
+
+    </div>
+
+
+    <div class="info">
+
+      <b>
+        What Is Propaganda?
+      </b>
+
+      Communication designed to influence
+      what people think, feel, or do.
+
+    </div>
+
+
+    <div class="info">
+
+      <b>
+        Important
+      </b>
+
+      This activity includes both
+      <strong>
+        American and British
+      </strong>
+      propaganda. Allied nations often
+      used similar techniques.
+
+    </div>
+
+  </div>
+
+
+  <div class="mission">
+
+    <strong>
+      YOUR MISSION
+    </strong>
+
+    <br><br>
+
+    Look at each poster and determine its
+    <strong>
+      MAIN PURPOSE.
+    </strong>
+
+    <br><br>
+
+    Ask yourself:
+
+    <strong>
+      What does this poster want the
+      audience to DO or FEEL?
+    </strong>
+
+  </div>
+
+
+  <h3>
+    Five Possible Purposes
+  </h3>
+
+  <ul>
+
+    <li>
+      Recruitment of Soldiers
+    </li>
+
+    <li>
+      Financing the War
+    </li>
+
+    <li>
+      Nationalism
+    </li>
+
+    <li>
+      Conservation of Resources
+    </li>
+
+    <li>
+      Home-Front Participation
+    </li>
+
+  </ul>
+
+
+  <div class="actions">
+
+    <button
+      class="primary"
+      id="startBtn"
+    >
+      Begin Propaganda Analysis
+    </button>
+
+  </div>
+
+</div>
+
+
+<div class="creelCard">
+
+  <div class="label">
+    COMMITTEE ON PUBLIC INFORMATION
+  </div>
+
+  <h3>
+    George Creel
+  </h3>
+
+  <p>
+    <strong>
+      Chairman • 1917–1919
+    </strong>
+  </p>
+
+  <hr
+    style="
+      width:100%;
+      border:0;
+      border-top:1px solid rgba(255,255,255,.3);
+    "
+  >
+
+  <p>
+    The CPI did not fight with guns.
+  </p>
+
+  <p>
+    It fought for
+    <strong>
+      public opinion.
+    </strong>
+  </p>
+
+  <p>
+    Creel organized writers, artists,
+    advertisers, filmmakers, and public
+    speakers to encourage Americans to
+    support the war.
+  </p>
+
+  <p>
+    Posters were especially powerful
+    because an image and a few words
+    could quickly create
+    <strong>
+      fear, pride, guilt, anger,
+      or patriotism.
+    </strong>
+  </p>
+
+
+  <div class="bigQuestion">
+
+    <strong>
+      THINK ABOUT THIS:
+    </strong>
+
+    <br><br>
+
+    Where is the line between
+    <strong>
+      informing citizens
+    </strong>
+    and
+    <strong>
+      persuading them?
+    </strong>
+
+  </div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     GAME SCREEN
+========================= -->
+
+<section
+  id="play"
+  class="screen"
+>
+
+<div class="progress">
+
+  <div id="bar"></div>
+
+</div>
+
+
+<div class="game">
+
+
+<!-- POSTER -->
+
+<div class="card posterCard">
+
+  <div class="posterWrap">
+
+    <div
+      class="posterNum"
+      id="posterNum"
+    ></div>
+
+    <img
+      id="posterImg"
+      alt="World War I propaganda poster"
+    >
+
+  </div>
+
+
+  <div class="posterInfo">
+
+    <span class="kicker">
+      Analyze the Message
+    </span>
+
+    <div
+      class="gameTitle"
+      id="title"
+    ></div>
+
+    <div class="prompt">
+
+      Study the
+
+      <strong>
+        words,
+        images,
+        emotions,
+        and call to action.
+      </strong>
+
+      <br><br>
+
+      What does this poster want
+      people to do or feel?
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- DECISION -->
+
+<div class="card decision">
+
+  <h3>
+    Identify the Main Purpose
+  </h3>
+
+
+  <div class="guideQuestion">
+
+    <strong>
+      Don't just ask:
+      “What is in the picture?”
+    </strong>
+
+    <br>
+
+    Ask:
+
+    <strong>
+      “What behavior is the poster
+      trying to cause?”
+    </strong>
+
+  </div>
+
+
+  <div id="choices"></div>
+
+
+  <div class="actions">
+
+    <button
+      class="primary"
+      id="submitBtn"
+    >
+      Lock In Purpose
+    </button>
+
+
+    <button
+      class="secondary"
+      id="nextBtn"
+      style="display:none"
+    >
+      Next Poster
+    </button>
+
+  </div>
+
+
+  <div
+    class="feedback"
+    id="feedback"
+  ></div>
+
+
+  <div
+    class="reveal"
+    id="reveal"
+  >
+
+    <strong>
+      PURPOSE REVEAL
+    </strong>
+
+
+    <div
+      class="tags"
+      id="purposeTags"
+    ></div>
+
+
+    <p>
+
+      <strong>
+        Important clue:
+      </strong>
+
+      <span id="clue"></span>
+
+    </p>
+
+
+    <p>
+
+      <strong>
+        Why this purpose fits:
+      </strong>
+
+      <span id="why"></span>
+
+    </p>
+
+  </div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     FINAL SCREEN
+========================= -->
+
+<section
+  id="finish"
+  class="screen"
+>
+
+<div class="panel finish">
+
+  <span class="kicker">
+    After-Action Report
+  </span>
+
+
+  <h2>
+    How did governments use propaganda
+    to mobilize people for total war?
+  </h2>
+
+
+  <div class="finishGrid">
+
+    <div class="stat">
+
+      <b>
+        Purpose Points
+      </b>
+
+      <strong id="finalPoints"></strong>
+
+    </div>
+
+
+    <div class="stat">
+
+      <b>
+        Correct First Try
+      </b>
+
+      <strong id="correctCount"></strong>
+
+    </div>
+
+
+    <div class="stat">
+
+      <b>
+        Best Streak
+      </b>
+
+      <strong id="bestStreak"></strong>
+
+    </div>
+
+  </div>
+
+
+  <p style="line-height:1.65">
+
+    World War I propaganda did more than
+    provide information.
+
+    Governments used
+
+    <strong>
+      fear,
+      patriotism,
+      pride,
+      guilt,
+      enemy stereotypes,
+      and direct calls to action
+    </strong>
+
+    to push civilians toward specific
+    wartime behaviors.
+
+  </p>
+
+
+  <label>
+
+    <strong>
+      Final Claim:
+    </strong>
+
+    Which propaganda strategy do you
+    think would have been most effective
+    during World War I?
+
+  </label>
+
+
+  <textarea
+    placeholder="Use at least one poster as evidence..."
+  ></textarea>
+
+</div>
+
+</section>
+
+
+</div>
+
+
+<script>
+
+
+/* =====================================
+   IMAGE HELPER
+
+   Wikimedia Commons serves the actual
+   archival image using the filename.
+===================================== */
+
+function commons(file){
+
+  return
+    "https://commons.wikimedia.org/wiki/Special:Redirect/file/"
+    + encodeURIComponent(file);
+
+}
+
+
+/*
+IMPORTANT:
+JavaScript automatic semicolon insertion
+doesn't like a line break directly after
+return, so redefine correctly here.
+*/
+
+commons = function(file){
+
+  return "https://commons.wikimedia.org/wiki/Special:Redirect/file/"
+    + encodeURIComponent(file);
+
+};
+
+
+/* =====================================
+   PURPOSE CATEGORIES
+===================================== */
+
+const purposes = [
+
+  "Recruitment of Soldiers",
+
+  "Financing the War",
+
+  "Nationalism",
+
+  "Conservation of Resources",
+
+  "Home-Front Participation"
+
+];
+
+
+/* =====================================
+   POSTER 7
+
+   Embedded directly because it is harder
+   to reliably hot-link from an archive.
+===================================== */
+
+const preserveProduceImage =
+"data:image/jpeg;base64,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";
+
+
+/* =====================================
+   POSTER DATA
+===================================== */
+
+const cards = [
+
+
+/* POSTER 1 */
+
+{
+  num:1,
+
+  title:"The Hun and the Home",
+
+  img:
+  "https://digital.library.temple.edu/digital/iiif/p16002coll9/3587/full/full/0/default.jpg",
+
+  accept:[
+    "Home-Front Participation"
+  ],
+
+  clue:
+  "The poster contrasts safe British homes with destroyed Belgian homes, then tells civilians to “back up” the men fighting.",
+
+  why:
+  "Its main purpose is to push civilians to support the men already fighting by making the war feel personal and close to home."
+},
+
+
+/* POSTER 2 */
+
+{
+  num:2,
+
+  title:"Halt the Hun!",
+
+  img:
+  commons(
+    '"Halt the Hun^ Buy U.S. Government Bonds. Third Liberty Loan." - NARA - 512624.jpg'
+  ),
+
+  accept:[
+    "Financing the War"
+  ],
+
+  clue:
+  "The largest call to action is “Buy U.S. Government Bonds — Third Liberty Loan.”",
+
+  why:
+  "The frightening enemy image is being used to convince Americans to loan money to the government by buying Liberty Bonds."
+},
+
+
+/* POSTER 3 */
+
+{
+  num:3,
+
+  title:"Women of Britain Say — GO!",
+
+  img:
+  commons(
+    'Women of Britain say - "Go!" LCCN2003663093.jpg'
+  ),
+
+  accept:[
+    "Recruitment of Soldiers"
+  ],
+
+  clue:
+  "Women and children watch soldiers march away while the poster tells men to “GO!”",
+
+  why:
+  "The poster pressures British men to enlist by suggesting that their families expect them to serve."
+},
+
+
+/* POSTER 4 */
+
+{
+  num:4,
+
+  title:"Hun or Home?",
+
+  img:
+  commons(
+    "Hun or home? Buy more Liberty Bonds LCCN2002719437.jpg"
+  ),
+
+  accept:[
+    "Financing the War"
+  ],
+
+  clue:
+  "The poster directly commands viewers to “Buy More Liberty Bonds.”",
+
+  why:
+  "Fear of German violence is being used to convince civilians to finance the war."
+},
+
+
+/* POSTER 5 */
+
+{
+  num:5,
+
+  title:"The Empire Needs Men!",
+
+  img:
+  "https://cdn.loc.gov/service/pnp/cph/3g10000/3g10000/3g10900/3g10913v.jpg",
+
+  accept:[
+    "Recruitment of Soldiers"
+  ],
+
+  clue:
+  "The poster says “The Empire Needs Men!” and “Enlist Now.”",
+
+  why:
+  "The message directly recruits men for military service and presents enlistment as defending the entire British Empire."
+},
+
+
+/* POSTER 6 */
+
+{
+  num:6,
+
+  title:"Coal — Save Your Bit",
+
+  img:
+  "https://digitalcollections.hoover.org/internal/media/dispatcher/155556/full?download=",
+
+  accept:[
+    "Conservation of Resources"
+  ],
+
+  clue:
+  "The poster argues that small daily savings of coal could add up to millions of tons.",
+
+  why:
+  "Civilians are being asked to use less of an important wartime resource."
+},
+
+
+/* POSTER 7 */
+
+{
+  num:7,
+
+  title:"Preserve Perishable Produce",
+
+  img:
+  preserveProduceImage,
+
+  accept:[
+    "Conservation of Resources"
+  ],
+
+  clue:
+  "The woman holds canned food while the poster encourages people with fruit gardens to use a canner.",
+
+  why:
+  "Preserving food reduced waste and allowed food supplies to last longer during wartime."
+},
+
+
+/* POSTER 8 */
+
+{
+  num:8,
+
+  title:
+  "Daddy, What Did YOU Do in the Great War?",
+
+  img:
+  commons(
+    "Daddy, what did You do in the Great War?.png"
+  ),
+
+  accept:[
+    "Recruitment of Soldiers",
+    "Home-Front Participation"
+  ],
+
+  clue:
+  "A future child asks her father what role he played during the war. The poster uses guilt, pride, and family expectations.",
+
+  why:
+  "The source key accepts both recruitment and home-front participation. The message suggests that doing nothing during the war would later be shameful."
+},
+
+
+/* POSTER 9 */
+
+{
+  num:9,
+
+  title:"Food Is Ammunition",
+
+  img:
+  commons(
+    "Food is ammunition-don't waste it - J.E. Sheridan. LCCN94514370.jpg"
+  ),
+
+  accept:[
+    "Conservation of Resources"
+  ],
+
+  clue:
+  "A basket of food appears beneath the words “Food is Ammunition — Don’t Waste It.”",
+
+  why:
+  "The poster treats food as a weapon of war and tells civilians that wasting food hurts the war effort."
+},
+
+
+/* POSTER 10 */
+
+{
+  num:10,
+
+  title:"Are YOU in This?",
+
+  img:
+  commons(
+    "'Are you in this' poster.jpg"
+  ),
+
+  accept:[
+    "Nationalism",
+    "Home-Front Participation"
+  ],
+
+  clue:
+  "Soldiers, workers, women, and other civilians appear together beneath the British flag.",
+
+  why:
+  "The key accepts nationalism and home-front participation. The message presents the entire nation as one team working toward victory."
+},
+
+
+/* POSTER 11 */
+
+{
+  num:11,
+
+  title:"Don’t Stop Saving Food",
+
+  img:
+  commons(
+    '"Don\'t Stop Saving Food." - NARA - 512539.jpg'
+  ),
+
+  accept:[
+    "Conservation of Resources"
+  ],
+
+  clue:
+  "The poster's entire message is essentially: keep saving food.",
+
+  why:
+  "Its goal is to continue civilian food conservation."
+},
+
+
+/* POSTER 12 */
+
+{
+  num:12,
+
+  title:"First Call",
+
+  img:
+  commons(
+    "First call - I need you in the Navy this minute! LCCN2002712332.jpg"
+  ),
+
+  accept:[
+    "Recruitment of Soldiers"
+  ],
+
+  clue:
+  "Uncle Sam points directly at the viewer and says that the Navy needs “YOU.”",
+
+  why:
+  "This is direct military recruitment. The viewer is made to feel personally responsible for answering the call."
+},
+
+
+/* POSTER 13 */
+
+{
+  num:13,
+
+  title:
+  "Once a German — Always a German!",
+
+  img:
+  commons(
+    "British Empire Union WWI poster.jpg"
+  ),
+
+  accept:[
+    "Nationalism"
+  ],
+
+  clue:
+  "The poster presents Germans as a permanent threat and contrasts them with British workers and British identity.",
+
+  why:
+  "The poster builds national unity by creating a threatening enemy group."
+},
+
+
+/* POSTER 14 */
+
+{
+  num:14,
+
+  title:"Red Cross or Iron Cross",
+
+  img:
+  commons(
+    'Red cross or iron cross? Wounded and a prisoner, our soldier cries for water. The German "sister" pours it on the ground before his eyes. There is no woman in Britain who would do it. There is no (12307882675).jpg'
+  ),
+
+  accept:[
+    "Home-Front Participation"
+  ],
+
+  clue:
+  "The poster contrasts British Red Cross service with a cruel image of a German nurse.",
+
+  why:
+  "Its main purpose is to encourage women to support Red Cross work and other wartime service on the home front."
+},
+
+
+/* POSTER 15 */
+
+{
+  num:15,
+
+  title:"Enlist To-Day",
+
+  img:
+  commons(
+    "Come into the ranks, 978660-001.jpg"
+  ),
+
+  accept:[
+    "Recruitment of Soldiers"
+  ],
+
+  clue:
+  "The poster tells men to “Come into the ranks,” says they are wanted at the front, and commands them to enlist.",
+
+  why:
+  "This is straightforward military recruitment."
+}
+
+
+];
+
+
+/* =====================================
+   GAME VARIABLES
+===================================== */
+
+let current = 0;
+
+let points = 0;
+
+let streak = 0;
+
+let bestStreak = 0;
+
+let correctFirst = 0;
+
+let selected = null;
+
+let answered = false;
+
+
+const $ = id =>
+  document.getElementById(id);
+
+
+/* =====================================
+   SWITCH SCREENS
+===================================== */
+
+function show(id){
+
+  document
+    .querySelectorAll(".screen")
+    .forEach(
+      screen =>
+      screen.classList.remove("active")
+    );
+
+  $(id)
+    .classList.add("active");
+
+}
+
+
+/* =====================================
+   START
+===================================== */
+
+$("startBtn")
+.onclick = () => {
+
+  show("play");
+
+  render();
+
+};
+
+
+/* =====================================
+   RENDER CURRENT POSTER
+===================================== */
+
+function render(){
+
+  answered = false;
+
+  selected = null;
+
+
+  const card =
+    cards[current];
+
+
+  $("now").textContent =
+    current + 1;
+
+
+  $("posterNum").textContent =
+    card.num;
+
+
+  $("posterImg").src =
+    card.img;
+
+
+  $("title").textContent =
+    card.title;
+
+
+  $("feedback").className =
+    "feedback";
+
+
+  $("feedback").innerHTML =
+    "";
+
+
+  $("reveal").className =
+    "reveal";
+
+
+  $("submitBtn").style.display =
+    "inline-block";
+
+
+  $("nextBtn").style.display =
+    "none";
+
+
+  $("bar").style.width =
+    (
+      current /
+      cards.length *
+      100
+    ) + "%";
+
+
+  const choiceBox =
+    $("choices");
+
+
+  choiceBox.innerHTML =
+    "";
+
+
+  purposes.forEach(
+    purpose => {
+
+      const button =
+        document.createElement("button");
+
+
+      button.className =
+        "choice";
+
+
+      button.textContent =
+        purpose;
+
+
+      button.onclick = () => {
+
+        if(answered){
+          return;
+        }
+
+
+        selected =
+          purpose;
+
+
+        document
+          .querySelectorAll(".choice")
+          .forEach(
+            item =>
+            item.classList.remove(
+              "selected"
+            )
+          );
+
+
+        button
+          .classList
+          .add("selected");
+
+      };
+
+
+      choiceBox
+        .appendChild(button);
+
+    }
+  );
+
+}
+
+
+/* =====================================
+   SUBMIT PURPOSE
+===================================== */
+
+$("submitBtn")
+.onclick = () => {
+
+
+  if(answered){
+    return;
+  }
+
+
+  if(!selected){
+
+    $("feedback").className =
+      "feedback show bad";
+
+
+    $("feedback").textContent =
+      "Choose a purpose first.";
+
+
+    return;
+
+  }
+
+
+  answered = true;
+
+
+  const card =
+    cards[current];
+
+
+  const correct =
+    card.accept.includes(
+      selected
+    );
+
+
+  if(correct){
+
+    points += 10;
+
+    streak++;
+
+    correctFirst++;
+
+    bestStreak =
+      Math.max(
+        bestStreak,
+        streak
+      );
+
+
+    $("feedback").className =
+      "feedback show good";
+
+
+    $("feedback").innerHTML =
+      "<strong>Correct!</strong> +10 Purpose Points";
+
+  }
+
+
+  else{
+
+    streak = 0;
+
+
+    $("feedback").className =
+      "feedback show bad";
+
+
+    $("feedback").innerHTML =
+      "<strong>Not the best match.</strong> Compare your answer with the purpose reveal below.";
+
+  }
+
+
+  $("points").textContent =
+    points;
+
+
+  $("streak").textContent =
+    streak;
+
+
+  $("purposeTags").innerHTML =
+    card.accept
+      .map(
+        purpose =>
+        "<span>" +
+        purpose +
+        "</span>"
+      )
+      .join("");
+
+
+  $("clue").textContent =
+    card.clue;
+
+
+  $("why").textContent =
+    card.why;
+
+
+  $("reveal").className =
+    "reveal show";
+
+
+  $("submitBtn").style.display =
+    "none";
+
+
+  $("nextBtn").style.display =
+    "inline-block";
+
+
+  $("bar").style.width =
+    (
+      (current + 1) /
+      cards.length *
+      100
+    ) + "%";
+
+};
+
+
+/* =====================================
+   NEXT POSTER
+===================================== */
+
+$("nextBtn")
+.onclick = () => {
+
+  current++;
+
+
+  if(
+    current >=
+    cards.length
+  ){
+
+    finish();
+
+    return;
+
+  }
+
+
+  render();
+
+};
+
+
+/* =====================================
+   FINISH
+===================================== */
+
+function finish(){
+
+  show("finish");
+
+
+  $("finalPoints").textContent =
+    points +
+    " / " +
+    (
+      cards.length *
+      10
+    );
+
+
+  $("correctCount").textContent =
+    correctFirst +
+    " / " +
+    cards.length;
+
+
+  $("bestStreak").textContent =
+    bestStreak;
+
+}
+
+
+</script>
+
+</body>
+</html>
